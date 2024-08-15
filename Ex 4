@@ -1,0 +1,30 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the Iris dataset from a CSV file
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
+df = pd.read_csv(url)
+
+# Display statistical description of the dataset
+print("Statistical Description of the Iris Dataset:")
+print(df.describe())
+
+# Select an attribute for analysis
+attribute = 'sepal_length'
+
+# Create a Box Plot for the selected attribute
+plt.figure(figsize=(10, 5))
+plt.boxplot(df[attribute])
+plt.title(f'Box Plot of {attribute}')
+plt.ylabel(attribute)
+plt.show()
+
+# Plot the dependency curve (line plot) for the selected attribute
+plt.figure(figsize=(10, 5))
+plt.plot(df[attribute], label=attribute, color='blue', marker='o')
+plt.title(f'Dependency Curve for {attribute}')
+plt.xlabel('Sample Index')
+plt.ylabel(attribute)
+plt.grid(True)
+plt.legend()
+plt.show()
